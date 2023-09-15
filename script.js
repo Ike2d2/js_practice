@@ -19,7 +19,7 @@ for (let i = 0; i < 25; i++) {
                 document.createElement("div")
             );
         frag.className = 'box';
-        frag.setAttribute('onClick', 'pink()');
+        frag.addEventListener('click', pink)
         container.appendChild(frag);
     }, 45 * i);
 };
@@ -49,16 +49,16 @@ function locate(person) {
         : console.log(`${person.firstName} lives at ${person.address}`);
 }
 
-locate(isaac);
-locate(santa);
+// locate(isaac);
+// locate(santa);
 
 function quadArea(width, height = width) {
     console.log('Area of quadrilateral is: ' + width * height);
 }
 
-quadArea(4, 7);
-quadArea(18, 213124);
-quadArea(3);
+// quadArea(4, 7);
+// quadArea(18, 213124);
+// quadArea(3);
 
 function calculator() {
     let first = prompt('Enter first number:');
@@ -69,36 +69,32 @@ function fizzbuzz() {
     let fizzbuzzing = true;
     do {
         let x = prompt('Enter Number');
-    if (parseInt(x)) {
+        if (parseInt(x)) {
 
-        if (x % 15 === 0) {
-            return 'fizzbuzz';
-            fizzbuzzing = false;
-        } else if (x % 5 === 0) {
-            return 'buzz';
-            fizzbuzzing = false;
-        } else if (x % 3 === 0) {
-            return 'fizz';;
-            fizzbuzzing = false;
+            if (x % 15 === 0) {
+                return 'fizzbuzz';
+                fizzbuzzing = false;
+            } else if (x % 5 === 0) {
+                return 'buzz';
+                fizzbuzzing = false;
+            } else if (x % 3 === 0) {
+                return 'fizz';;
+                fizzbuzzing = false;
+            } else {
+                return x;
+                fizzbuzzing = false;
+            }
+
         } else {
-            return x;
-            fizzbuzzing = false;
+            alert('Please Enter A Number');
         }
-
-    } else {
-        alert('Please Enter A Number');
-    }
     } while (fizzbuzzing);
-    
+
 }
 
-function pink() {
-    window.onclick = e => {
-        if (e.target.classList.contains('box')) {
-            e.target.classList.toggle('pink');
-            e.target.innerText = e.target.innerText === '' ? fizzbuzz() : '';  
-        }
-    }
+function pink(frag) {
+    frag.classList.toggle('pink');
+    frag.innerText = frag.innerText === '' ? fizzbuzz() : '';
 }
 
 function checkTime() {
@@ -106,22 +102,16 @@ function checkTime() {
 
     if (!isNaN(time.value)) {
         let display = document.getElementById('display')
-            display.innerText = rangeCheck(time.value)
+        display.innerText = rangeCheck(time.value)
     } else {
         alert('Please Enter A Number');
     }
 }
 
 function rangeCheck(x) {
-    if (x >= 0 && x <= 12) {
-        return 'Good Morning';
-    } else if (x >= 13 && x <= 16) {
-        return 'Good Afternoon';
-    } else if (x >= 17 && x <= 19) {
-        return 'Good Evening';
-    } else if (x >= 20 && x <= 24) {
-        return 'Good Night';
-    } else {
-        return 'help';
-    }
+    if (x >= 0 && x <= 12) 'Good Morning';
+    else if (x >= 13 && x <= 16) 'Good Afternoon';
+    else if (x >= 17 && x <= 19) 'Good Evening';
+    else if (x >= 20 && x <= 24) 'Good Night';
+    else 'help';
 }
