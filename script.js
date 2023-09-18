@@ -24,26 +24,16 @@ for (let i = 0; i < 25; i++) {
 }
 
 let body = document.getElementById("body");
-let r = 255;
-let g = 155;
-let b = 155;
+let deg = 0;
 
 setInterval( () => {
-    if (r === 255 && g < 255 && b === 155) {
-        g++;
-    } else if (r > 155 && g === 255) {
-        r--;
-    } else if (r === 155 && g === 255 && b < 255) {
-        b++;
-    } else if (g > 155 && b === 255) {
-        g--;
-    } else if (r < 255 && g === 155 && b === 255) {
-        r++;
-    } else if (r === 255 && b > 155) {
-        b--;
+    if (deg < 359) {
+        deg++;
+    } else if (deg =359) {
+        deg = 0;
     }
-    body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-}, 300)
+    body.style.backgroundColor = `hsl(${deg}, 100%, 85%)`;
+}, 300);
 
 
 // let isaac = {
