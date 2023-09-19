@@ -114,3 +114,10 @@ body {
         opacity: 1;
     }
 }
+
+#list {
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

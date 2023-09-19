@@ -12,7 +12,7 @@
 
 let container = document.getElementById("container");
 
-for (let i = 0; i < 25; i++) {
+new Array(25).fill(0).forEach((e, i) =>
     setTimeout(function () {
         let frag = document
             .createDocumentFragment()
@@ -20,16 +20,16 @@ for (let i = 0; i < 25; i++) {
         frag.className = "box";
         frag.addEventListener("click", pink);
         container.appendChild(frag);
-    }, 45 * i);
-}
+    }, 45 * i)
+)
 
 let body = document.getElementById("body");
 let deg = 0;
 
-setInterval( () => {
+setInterval(() => {
     if (deg < 359) {
         deg++;
-    } else if (deg =359) {
+    } else if (deg = 359) {
         deg = 0;
     }
     body.style.backgroundColor = `hsl(${deg}, 100%, 85%)`;
@@ -79,17 +79,17 @@ function fizzbuzz() {
         let x = prompt("Enter Number");
         if (parseInt(x)) {
             if (x % 15 === 0) {
+                fizzbuzzing = false;
                 return "fizzbuzz";
-                fizzbuzzing = false;
             } else if (x % 5 === 0) {
+                fizzbuzzing = false;
                 return "buzz";
-                fizzbuzzing = false;
             } else if (x % 3 === 0) {
+                fizzbuzzing = false;
                 return "fizz";
-                fizzbuzzing = false;
             } else {
-                return x;
                 fizzbuzzing = false;
+                return x;
             }
         } else {
             alert("Please Enter A Number");
@@ -145,13 +145,13 @@ document.getElementById("checkTime").addEventListener("click", checkTime);
 // ** is cooler than Math.pow()
 
 // Dynamic Variables because swag
-for (let i = 1; i < 4; i++) {
-    window[`num` + i] = Math.floor(Math.random() * 30) + 1;
-}
+// for (let i = 1; i < 4; i++) {
+//     window[`num` + i] = Math.floor(Math.random() * 30) + 1;
+// }
 
-console.log(`num1: ${num1}`);
-console.log(`num2: ${num2}`);
-console.log(`num3: ${num3}`);
+// console.log(`num1: ${num1}`);
+// console.log(`num2: ${num2}`);
+// console.log(`num3: ${num3}`);
 
 // let s = "'single'"
 // let d = '"double"'
@@ -162,3 +162,54 @@ console.log(`num3: ${num3}`);
 // console.log(speech);
 // let tip = "We can escape quotes by using \\"
 // console.log(tip);
+
+let nums = [1, 2, 3, 4, 5, 6, 7];
+let ul = '<ul>';
+for (let i = nums.length - 1; i >= 0; i -= 2) {
+    (ul += `<li>${nums[i]}</li>`)
+}
+ul += '</ul>';
+
+let list = document.getElementById('list')
+list.innerHTML = ul;
+
+// Array Ex 1
+let cars = ['Ford', 'Honda', 'Toyota', 'Volkswagen'];
+let carsList = '<p>';
+cars[0] = 'Tesla';
+cars[cars.length] = 'Mercedes';
+cars.forEach((e) => carsList += e);
+carsList += '</p>'
+list.innerHTML += carsList + ` ${cars.length}`;
+console.log(cars.length)
+
+// Array Ex 2
+function multiplyArrays(x, y) {
+    let result = [];
+    x.forEach((x, i) => {
+        result.push(x * y[i])
+    })
+    return result;
+}
+
+let answer = multiplyArrays([1, 2, 3, 4], [5, 6, 7, 8]);
+console.log(answer);
+
+// Array Ex 3
+function multiplyMatrices(x, y) {
+    let result = [[], []];
+    result[0].push(x[0][0] * y[0][0] + x[0][1] * y[1][0], 
+                   x[0][0] * y[0][1] + x[0][1] * y[1][1])
+    result[1].push(x[1][0] * y[0][0] + x[1][1] * y[1][0], 
+                   x[1][0] * y[0][1] + x[1][1] * y[1][1])
+
+    x.forEach((xv, xi) => {
+        y.forEach((yv, yi) => {
+            x[xi][] * y[yi][xi] + 
+        })
+    })
+    return result;
+}
+
+let matrix = multiplyMatrices([[1, 2], [3, 4]], [[5, 6], [7, 8]]);
+console.log(matrix);
