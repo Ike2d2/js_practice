@@ -13,12 +13,12 @@
 let container = document.getElementById("container");
 
 new Array(25).fill(0).forEach((e, i) =>
-    setTimeout(function () {
+    setTimeout(() => {
         let frag = document
             .createDocumentFragment()
             .appendChild(document.createElement("div"));
         frag.className = "box";
-        frag.addEventListener("click", pink);
+        frag.addEventListener("click", calculator);
         container.appendChild(frag);
     }, 45 * i)
 )
@@ -67,11 +67,35 @@ setInterval(() => {
 // quadArea(18, 213124);
 // quadArea(3);
 
-// function calculator() {
-//     let first = prompt("Enter first number:");
-//     let second = prompt("Enter second number");
-//     alert(first + second);
-// }
+document.getElementById('add').addEventListener('click', () => calculator('+'));
+document.getElementById('subtract').addEventListener('click', () => calculator('-'));
+document.getElementById('multiply').addEventListener('click', () => calculator('*'));
+document.getElementById('divide').addEventListener('click', () => calculator('/'));
+
+Array.from(document.getElementsByClassName('calcNum')).forEach((x) => x.addEventListener('click', (e) => {
+    document.getElementById('calcDisplay').innerText += e.target.innerText;
+}))
+
+function calculator(x) {
+    let first = parseInt(document.getElementById('calc1').value);
+    let second = parseInt(document.getElementById('calc2').value);
+    let answer;
+    switch (x) {
+        case '+':
+            answer = first + second
+            break;
+        case '-':
+            answer = first - second
+            break;
+        case '*':
+            answer = first * second
+            break;
+        case '/':
+            answer = first / second
+            break;
+    }
+    document.getElementById('answer').innerText = answer;
+}
 
 function fizzbuzz() {
     let fizzbuzzing = true;
@@ -163,49 +187,45 @@ document.getElementById("checkTime").addEventListener("click", checkTime);
 // let tip = "We can escape quotes by using \\"
 // console.log(tip);
 
-let nums = [1, 2, 3, 4, 5, 6, 7];
-let ul = '<ul>';
-for (let i = nums.length - 1; i >= 0; i -= 2) {
-    (ul += `<li>${nums[i]}</li>`)
-}
-ul += '</ul>';
+// let nums = [1, 2, 3, 4, 5, 6, 7];
+// let ul = '<ul>';
+// for (let i = nums.length - 1; i >= 0; i -= 2) {
+//     (ul += `<li>${nums[i]}</li>`)
+// }
+// ul += '</ul>';
 
-let list = document.getElementById('list')
-list.innerHTML = ul;
+// let list = document.getElementById('list')
+// list.innerHTML = ul;
 
 // Array Ex 1
-let cars = ['Ford', 'Honda', 'Toyota', 'Volkswagen'];
-let carsList = '<p>';
-cars[0] = 'Tesla';
-cars[cars.length] = 'Mercedes';
-cars.forEach((e) => carsList += e);
-carsList += '</p>'
-list.innerHTML += carsList + ` ${cars.length}`;
-console.log(cars.length)
+// let cars = ['Ford', 'Honda', 'Toyota', 'Volkswagen'];
+// let carsList = '<p>';
+// cars[0] = 'Tesla';
+// cars[cars.length] = 'Mercedes';
+// cars.forEach((e) => carsList += e);
+// carsList += '</p>'
+// list.innerHTML += carsList + ` ${cars.length}`;
+// console.log(cars.length)
 
 // Array Ex 2
-function multiplyArrays(x, y) {
-    let result = [];
-    x.forEach((x, i) => {
-        result.push(x * y[i])
-    })
-    return result;
-}
+// function multiplyArrays(x, y) {
+//     let result = [];
+//     x.forEach((x, i) => {
+//         result.push(x * y[i])
+//     })
+//     return result;
+// }
 
-let answer = multiplyArrays([1, 2, 3, 4], [5, 6, 7, 8]);
-console.log(answer);
+// let answer = multiplyArrays([1, 2, 3, 4], [5, 6, 7, 8]);
+// console.log(answer);
 
 // Array Ex 3
 function multiplyMatrices(x, y) {
     let result = [[], []];
-    result[0].push(x[0][0] * y[0][0] + x[0][1] * y[1][0], 
-                   x[0][0] * y[0][1] + x[0][1] * y[1][1])
-    result[1].push(x[1][0] * y[0][0] + x[1][1] * y[1][0], 
-                   x[1][0] * y[0][1] + x[1][1] * y[1][1])
 
     x.forEach((xv, xi) => {
         y.forEach((yv, yi) => {
-            x[xi][] * y[yi][xi] + 
+            result[xi].push(x[xi][0] * y[0][yi] + x[xi][1] * y[1][yi])
         })
     })
     return result;
@@ -213,3 +233,40 @@ function multiplyMatrices(x, y) {
 
 let matrix = multiplyMatrices([[1, 2], [3, 4]], [[5, 6], [7, 8]]);
 console.log(matrix);
+
+// let colors = function(){
+//     console.log('red\nblue\npurple');
+// }
+
+// let newColors = colors;
+// newColors();
+
+// let sum = (a,b) => a + b;
+// let isPositive = number => number >= 0;
+// let randomNumber = () => Math.random();
+// document.addEventListener('click', () => console.log('Click here'));
+
+// let isaac = (a, b) => console.log(`Hello Isaac. You are a ${a} & ${b}`)
+// document.addEventListener('load', isaac('cool', 'smart guy'))
+
+let slides = ['https://www.minecraft.net/content/dam/archive/4da5ff0255092969c073274e0430e52d-6.png',
+'https://www.minecraft.net/content/dam/archive/81ebdebf3e2b3f2fc7e0dfa2292d6f03-1.png',
+'https://www.minecraft.net/content/dam/archive/e613e23d3dde6f6b1a90c1f563c1b59d-Realms.jpeg',
+'https://www.minecraft.net/content/dam/minecraft/article-pictures/Article-thumbnail-1-277x277.jpg',
+'https://www.minecraft.net/content/dam/games/minecraft/key-art/bee-2x2.jpg']
+
+let slideI = 0
+document.getElementById('slidesI').innerText = slideI + 1
+let slideshowWrap = document.getElementById('slideshowWrap');
+let slideshow = document.getElementById('slideshow');
+slideshow.src = slides[slideI];
+document.getElementById('slideRight').addEventListener('click', () => {
+    slideI < slides.length -1 ? slideI++ : slideI = 0
+    slideshow.src = slides[slideI];
+    document.getElementById('slidesI').innerText = slideI + 1
+})
+document.getElementById('slideLeft').addEventListener('click', () => {
+    slideI > 0  ? slideI-- : slideI = slides.length - 1
+    slideshow.src = slides[slideI];
+    document.getElementById('slidesI').innerText = slideI + 1
+})

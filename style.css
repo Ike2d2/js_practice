@@ -12,6 +12,7 @@ body {
     font-family: sans-serif;
     font-size: 4vw;
     background-color: hsl(0, 100%, 85%);
+    position: relative;
 }
 
 #container {
@@ -115,9 +116,99 @@ body {
     }
 }
 
-#list {
+#list, #calc {
     font-size: 30px;
     position: absolute;
     top: 0;
     left: 0;
+}
+
+#calc {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+    padding: 10px;
+    width: 200px;
+    height: 400px;
+}
+
+#calcDisplay {
+    display: flex;
+    background-color: #808080;
+    height: 50px;
+    padding: 0px 10px;
+    font-size: 20px;
+    color: white;
+    align-items: center;
+}
+
+#calcBtns {
+    display: flex;
+    column-gap: 4px;
+    width: 100%;
+    height: 200px;
+}
+
+.calcBtn {
+    background-image: linear-gradient(135deg, #eee, #b8b8b8);
+    border: 1px solid #666;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calcBtn:hover {
+    background-image: linear-gradient(135deg, #fff, #d8d8d8);
+}
+
+.calcBtn:active {
+    background-image: linear-gradient(135deg, #ccc, #888888);
+}
+
+#operations {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    flex-grow: 1;
+}
+
+#numbers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1px;
+    flex-grow: 3;
+}
+
+.calcNum {
+    width: 32%;
+}
+
+#slideshowWrap {
+    position:absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid white;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    /* object-fit: cover; */
+}
+
+#slideshowWrap>nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #b8b8b8;
+    font-size: 20px;
+}
+
+#slideshow {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }

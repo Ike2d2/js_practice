@@ -1,25 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JS Practice</title>
-    <script>
-      // console.log('hello world');
-    </script>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script defer src="script.js"></script>
-  </head>
 
-  <body id="body">
-    <div id="timeWrap">
-      <div id="display"></div>
-      <div id="field">
-        <input type="text" id="time" placeholder="Hour..." />
-        <button id="checkTime">Check Time</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS Practice</title>
+  <script>
+    // console.log('hello world');
+  </script>
+  <link rel="stylesheet" type="text/css" href="reset.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+
+<body id="body">
+  <div id="timeWrap">
+    <div id="display"></div>
+    <div id="field">
+      <input type="text" id="time" placeholder="Hour..." />
+      <button id="checkTime">Check Time</button>
+    </div>
+  </div>
+  <div id="container"></div>
+  <div id="list"></div>
+  <div id="calc">
+    <div id='calcDisplay'></div>
+    <div id="calcBtns">
+      <div id="numbers">
+        <button class="calcNum calcBtn">1</button>
+        <button class="calcNum calcBtn">2</button>
+        <button class="calcNum calcBtn">3</button>
+        <button class="calcNum calcBtn">4</button>
+        <button class="calcNum calcBtn">5</button>
+        <button class="calcNum calcBtn">6</button>
+        <button class="calcNum calcBtn">7</button>
+        <button class="calcNum calcBtn">8</button>
+        <button class="calcNum calcBtn">9</button>
+        <button class="calcNum calcBtn">0</button>
+      </div>
+      <div id="operations">
+        <button class="calcBtn" id='add'>+</button>
+        <button class="calcBtn" id='subtract'>-</button>
+        <button class="calcBtn" id='multiply'>*</button>
+        <button class="calcBtn" id='divide'>/</button>
       </div>
     </div>
-    <div id="container"></div>
-    <div id="list"></div>
-  </body>
+  </div>
+  <div id="slideshowWrap">
+    <img id="slideshow">
+    <nav>
+      <button id="slideLeft">&lt;</button>
+      <span id="slidesI"></span>
+      <button id="slideRight">&gt;</button>
+    </nav>
+  </div>
+
+</body>
+
 </html>
