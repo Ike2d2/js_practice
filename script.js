@@ -12,14 +12,12 @@
 
 let container = document.getElementById("container");
 
-new Array(25).fill(0).forEach((e, i) =>
+new Array(25).fill().forEach((e, i) =>
     setTimeout(() => {
-        let frag = document
-            .createDocumentFragment()
-            .appendChild(document.createElement("div"));
-        frag.className = "box";
-        frag.addEventListener("click", calculator);
-        container.appendChild(frag);
+        let box = document.createElement("div");
+        box.className = "box";
+        box.addEventListener("click", pink);
+        container.appendChild(box);
     }, 45 * i)
 )
 
@@ -75,6 +73,8 @@ document.getElementById('divide').addEventListener('click', () => calculator('/'
 Array.from(document.getElementsByClassName('calcNum')).forEach((x) => x.addEventListener('click', (e) => {
     document.getElementById('calcDisplay').innerText += e.target.innerText;
 }))
+
+document.getElementById('clear').addEventListener('click', () => document.getElementById('calcDisplay').innerText = '')
 
 function calculator(x) {
     let first = parseInt(document.getElementById('calc1').value);
@@ -250,10 +250,10 @@ console.log(matrix);
 // document.addEventListener('load', isaac('cool', 'smart guy'))
 
 let slides = ['https://www.minecraft.net/content/dam/archive/4da5ff0255092969c073274e0430e52d-6.png',
-'https://www.minecraft.net/content/dam/archive/81ebdebf3e2b3f2fc7e0dfa2292d6f03-1.png',
-'https://www.minecraft.net/content/dam/archive/e613e23d3dde6f6b1a90c1f563c1b59d-Realms.jpeg',
-'https://www.minecraft.net/content/dam/minecraft/article-pictures/Article-thumbnail-1-277x277.jpg',
-'https://www.minecraft.net/content/dam/games/minecraft/key-art/bee-2x2.jpg']
+    'https://www.minecraft.net/content/dam/archive/81ebdebf3e2b3f2fc7e0dfa2292d6f03-1.png',
+    'https://www.minecraft.net/content/dam/archive/e613e23d3dde6f6b1a90c1f563c1b59d-Realms.jpeg',
+    'https://www.minecraft.net/content/dam/minecraft/article-pictures/Article-thumbnail-1-277x277.jpg',
+    'https://www.minecraft.net/content/dam/games/minecraft/key-art/bee-2x2.jpg']
 
 let slideI = 0
 document.getElementById('slidesI').innerText = slideI + 1
@@ -261,12 +261,24 @@ let slideshowWrap = document.getElementById('slideshowWrap');
 let slideshow = document.getElementById('slideshow');
 slideshow.src = slides[slideI];
 document.getElementById('slideRight').addEventListener('click', () => {
-    slideI < slides.length -1 ? slideI++ : slideI = 0
+    slideI < slides.length - 1 ? slideI++ : slideI = 0
     slideshow.src = slides[slideI];
     document.getElementById('slidesI').innerText = slideI + 1
 })
 document.getElementById('slideLeft').addEventListener('click', () => {
-    slideI > 0  ? slideI-- : slideI = slides.length - 1
+    slideI > 0 ? slideI-- : slideI = slides.length - 1
     slideshow.src = slides[slideI];
     document.getElementById('slidesI').innerText = slideI + 1
 })
+
+let nav = document.getElementById('mainNav');
+
+new Array(10).fill().forEach((e, i) =>
+    setTimeout(() => {
+    let a = document.createElement("a");
+    a.className = `link${i}`;
+    a.innerText = `Link ${i}`;
+    a.setAttribute('href',`#${a.className}`)
+    nav.appendChild(a);
+}, 80 * i
+))

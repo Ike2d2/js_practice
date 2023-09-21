@@ -212,3 +212,9 @@ body {
     object-fit: cover;
     object-position: center;
 }
+
+#mainNav {
+    display: flex;
+    column-gap: 10px;
+    font-size: 20px;
+}
