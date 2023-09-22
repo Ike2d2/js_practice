@@ -275,10 +275,49 @@ let nav = document.getElementById('mainNav');
 
 new Array(10).fill().forEach((e, i) =>
     setTimeout(() => {
-    let a = document.createElement("a");
-    a.className = `link${i}`;
-    a.innerText = `Link ${i}`;
-    a.setAttribute('href',`#${a.className}`)
-    nav.appendChild(a);
-}, 80 * i
-))
+        let a = document.createElement("a");
+        a.className = `link${i}`;
+        a.innerText = `Link ${i}`;
+        a.setAttribute('href', `#${a.className}`)
+        nav.appendChild(a);
+    },80 * i)
+)
+
+// function Car(make, model, year, engine){
+//     this.make = make;
+//     this.model = model;
+//     this.year = year;
+//     this.enginer = engine;
+// }
+
+// function Engine(layout, cylinder, hp){
+//     this.layout = layout;
+//     this.cylinder = cylinder;
+//     this.hp = hp;
+// }
+
+// let V8Turbo = new Engine("I", 4, 170);
+// let Passat = new Car("Volkswagen", "Passat", 2015, V8Turbo);
+
+let createLI = document.getElementById("createLI");
+let dList = document.getElementById("dList");
+let listInputText = document.getElementById("listInputText");
+let listArray = []
+createLI.addEventListener("click", () => {
+    if (listInputText.value) {
+        let text = listInputText.value;
+        listArray.push(text);
+        dList.innerHTML = null;
+        listArray.forEach((e) => {
+            let elem = document.createElement('li');
+            elem.innerText = e
+            dList.append(elem)
+        })
+        // console.log(listArray)
+        // This was my non-array method
+
+        // let elem = document.createElement('li');
+        // elem.innerText = listInputText.value
+        // dList.append(elem)
+    }
+})
