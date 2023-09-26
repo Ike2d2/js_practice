@@ -10,18 +10,18 @@
 // console.log(`[Sum]: ${sum}`);
 // console.log(`[Concat]: ${concat}`);
 
-let container = document.getElementById("container");
+const container = document.getElementById("container");
 
 new Array(25).fill().forEach((e, i) =>
     setTimeout(() => {
-        let box = document.createElement("div");
+        const box = document.createElement("div");
         box.className = "box";
         box.addEventListener("click", pink);
         container.appendChild(box);
     }, 45 * i)
 )
 
-let body = document.getElementById("body");
+const body = document.getElementById("body");
 let deg = 0;
 
 setInterval(() => {
@@ -65,12 +65,11 @@ setInterval(() => {
 // quadArea(18, 213124);
 // quadArea(3);
 
-let calcArray = new Array();
-let calcDisplay = document.getElementById('calcDisplay');
+const calcArray = new Array();
+const calcDisplay = document.getElementById('calcDisplay');
 
 Array.from(document.getElementsByClassName('calcNum')).forEach((x) => x.addEventListener('click', (e) => {
     calcDisplay.innerText += e.target.innerText;
-    console.log(calcArray);
 }))
 
 function clearDisplay() {
@@ -148,7 +147,7 @@ function pink(e) {
 }
 
 function checkTime() {
-    let time = document.getElementById("time");
+    const time = document.getElementById("time");
 
     if (!isNaN(time.value)) {
         let display = document.getElementById("display");
@@ -159,8 +158,6 @@ function checkTime() {
 }
 
 function rangeCheck(x) {
-    console.log("checking");
-    console.log(x);
     if (x >= 0 && x <= 12) return "Good Morning";
     else if (x >= 13 && x <= 16) return "Good Afternoon";
     else if (x >= 17 && x <= 19) return "Good Evening";
@@ -270,7 +267,7 @@ document.getElementById("checkTime").addEventListener("click", checkTime);
 // let isaac = (a, b) => console.log(`Hello Isaac. You are a ${a} & ${b}`)
 // document.addEventListener('load', isaac('cool', 'smart guy'))
 
-let slides = ['https://www.minecraft.net/content/dam/archive/4da5ff0255092969c073274e0430e52d-6.png',
+const slides = ['https://www.minecraft.net/content/dam/archive/4da5ff0255092969c073274e0430e52d-6.png',
     'https://www.minecraft.net/content/dam/archive/81ebdebf3e2b3f2fc7e0dfa2292d6f03-1.png',
     'https://www.minecraft.net/content/dam/archive/e613e23d3dde6f6b1a90c1f563c1b59d-Realms.jpeg',
     'https://www.minecraft.net/content/dam/minecraft/article-pictures/Article-thumbnail-1-277x277.jpg',
@@ -278,8 +275,8 @@ let slides = ['https://www.minecraft.net/content/dam/archive/4da5ff0255092969c07
 
 let slideI = 0
 document.getElementById('slidesI').innerText = slideI + 1
-let slideshowWrap = document.getElementById('slideshowWrap');
-let slideshow = document.getElementById('slideshow');
+const slideshowWrap = document.getElementById('slideshowWrap');
+const slideshow = document.getElementById('slideshow');
 slideshow.src = slides[slideI];
 document.getElementById('slideRight').addEventListener('click', () => {
     slideI < slides.length - 1 ? slideI++ : slideI = 0
@@ -292,11 +289,11 @@ document.getElementById('slideLeft').addEventListener('click', () => {
     document.getElementById('slidesI').innerText = slideI + 1
 })
 
-let nav = document.getElementById('mainNav');
+const nav = document.getElementById('mainNav');
 
 new Array(10).fill().forEach((e, i) =>
     setTimeout(() => {
-        let a = document.createElement("a");
+        const a = document.createElement("a");
         a.className = `link${i}`;
         a.innerText = `Link ${i}`;
         a.setAttribute('href', `#${a.className}`)
@@ -320,10 +317,10 @@ new Array(10).fill().forEach((e, i) =>
 // let V8Turbo = new Engine("I", 4, 170);
 // let Passat = new Car("Volkswagen", "Passat", 2015, V8Turbo);
 
-let createLI = document.getElementById("createLI");
-let dList = document.getElementById("dList");
-let listInputText = document.getElementById("listInputText");
-let listArray = []
+const createLI = document.getElementById("createLI");
+const dList = document.getElementById("dList");
+const listInputText = document.getElementById("listInputText");
+const listArray = []
 createLI.addEventListener("click", () => {
     if (listInputText.value) {
         let text = listInputText.value;
@@ -342,3 +339,20 @@ createLI.addEventListener("click", () => {
         // dList.append(elem)
     }
 })
+
+// More Prototyping
+
+function Movie(title, year, genre){
+    this.title = title;
+    this.year = year;
+    this.genre = genre;
+}
+
+const lovesMeNot = new Movie('He Loves Me, He Loves Me Not', 2002, 'Thriller')
+console.log(lovesMeNot);
+
+const EEA = new Movie('Everything, Everywhere, All at Once', 2022, 'Sci-Fi/Adventure');
+console.log(EEA);
+
+const beautiful = new Movie('Life Is Beautiful', 1997, 'Comedy/Drama/Romance');
+console.log(beautiful);
