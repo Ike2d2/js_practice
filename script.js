@@ -65,36 +65,57 @@ setInterval(() => {
 // quadArea(18, 213124);
 // quadArea(3);
 
+let calcArray = new Array();
+let calcDisplay = document.getElementById('calcDisplay');
+
+Array.from(document.getElementsByClassName('calcNum')).forEach((x) => x.addEventListener('click', (e) => {
+    calcDisplay.innerText += e.target.innerText;
+    console.log(calcArray);
+}))
+
+function clearDisplay() {
+    calcDisplay.innerText = ''
+    calcArray.length = 0;
+}
 document.getElementById('add').addEventListener('click', () => calculator('+'));
 document.getElementById('subtract').addEventListener('click', () => calculator('-'));
 document.getElementById('multiply').addEventListener('click', () => calculator('*'));
 document.getElementById('divide').addEventListener('click', () => calculator('/'));
+document.getElementById('clear').addEventListener('click', clearDisplay)
+document.getElementById('calculate').addEventListener('click', calculate)
 
-Array.from(document.getElementsByClassName('calcNum')).forEach((x) => x.addEventListener('click', (e) => {
-    document.getElementById('calcDisplay').innerText += e.target.innerText;
-}))
-
-document.getElementById('clear').addEventListener('click', () => document.getElementById('calcDisplay').innerText = '')
+let answer;
 
 function calculator(x) {
-    let first = parseInt(document.getElementById('calc1').value);
-    let second = parseInt(document.getElementById('calc2').value);
-    let answer;
-    switch (x) {
+    if (calcArray.length === 0) {
+        calcArray[0] = Number(calcDisplay.innerText);
+        calcArray[1] = x;
+        calcDisplay.innerText = '';
+    } else {
+        calculate()
+        calcArray[0] = answer;
+        calcArray[1] = x;
+        calcDisplay.innerText = '';
+    }
+}
+
+function calculate() {
+    calcArray[2] = Number(calcDisplay.innerText);
+    switch (calcArray[1]) {
         case '+':
-            answer = first + second
+            answer = calcArray[0] + calcArray[2]
             break;
         case '-':
-            answer = first - second
+            answer = calcArray[0] - calcArray[2]
             break;
         case '*':
-            answer = first * second
+            answer = calcArray[0] * calcArray[2]
             break;
         case '/':
-            answer = first / second
+            answer = calcArray[0] / calcArray[2]
             break;
     }
-    document.getElementById('answer').innerText = answer;
+    calcDisplay.innerText = answer;
 }
 
 function fizzbuzz() {
@@ -220,19 +241,19 @@ document.getElementById("checkTime").addEventListener("click", checkTime);
 // console.log(answer);
 
 // Array Ex 3
-function multiplyMatrices(x, y) {
-    let result = [[], []];
+// function multiplyMatrices(x, y) {
+//     let result = [[], []];
 
-    x.forEach((xv, xi) => {
-        y.forEach((yv, yi) => {
-            result[xi].push(x[xi][0] * y[0][yi] + x[xi][1] * y[1][yi])
-        })
-    })
-    return result;
-}
+//     x.forEach((xv, xi) => {
+//         y.forEach((yv, yi) => {
+//             result[xi].push(x[xi][0] * y[0][yi] + x[xi][1] * y[1][yi])
+//         })
+//     })
+//     return result;
+// }
 
-let matrix = multiplyMatrices([[1, 2], [3, 4]], [[5, 6], [7, 8]]);
-console.log(matrix);
+// let matrix = multiplyMatrices([[1, 2], [3, 4]], [[5, 6], [7, 8]]);
+// console.log(matrix);
 
 // let colors = function(){
 //     console.log('red\nblue\npurple');
@@ -280,7 +301,7 @@ new Array(10).fill().forEach((e, i) =>
         a.innerText = `Link ${i}`;
         a.setAttribute('href', `#${a.className}`)
         nav.appendChild(a);
-    },80 * i)
+    }, 80 * i)
 )
 
 // function Car(make, model, year, engine){

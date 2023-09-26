@@ -170,20 +170,28 @@ body {
 #operations {
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
+    justify-content: space-between;
+    row-gap: 1px;
+}
+
+#operations button {
     flex-grow: 1;
 }
 
 #numbers {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: end;
     gap: 1px;
-    flex-grow: 3;
 }
 
 .calcNum {
     width: 32%;
+    flex-grow: 1;
+}
+
+.calcNum:last-child {
+    flex-grow: 0;
 }
 
 #slideshowWrap {
