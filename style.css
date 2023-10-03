@@ -280,3 +280,24 @@ body {
     align-items: center;
     column-gap: 10px;
 }
+
+#like-wrap{
+    display: flex;
+    font-size: 16px;
+    column-gap: 8px;
+    align-items: center;
+}
+
+#likes {
+    border: none;
+    background-color: #808080;
+    color: white;
+    width: 2rem;
+    height: 1.6rem;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+#totalLikes {
+    font-weight: bold;
+}

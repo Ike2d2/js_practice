@@ -342,17 +342,38 @@ createLI.addEventListener("click", () => {
 
 // More Prototyping
 
-function Movie(title, year, genre){
-    this.title = title;
-    this.year = year;
-    this.genre = genre;
-}
+// function Movie(title, year, genre) {
+//     this.title = title;
+//     this.year = year;
+//     this.genre = genre;
+// }
 
-const lovesMeNot = new Movie('He Loves Me, He Loves Me Not', 2002, 'Thriller')
-console.log(lovesMeNot);
+// const lovesMeNot = new Movie('He Loves Me, He Loves Me Not', 2002, 'Thriller')
+// console.log(lovesMeNot);
 
-const EEA = new Movie('Everything, Everywhere, All at Once', 2022, 'Sci-Fi/Adventure');
-console.log(EEA);
+// const EEA = new Movie('Everything, Everywhere, All at Once', 2022, 'Sci-Fi/Adventure');
+// console.log(EEA);
 
-const beautiful = new Movie('Life Is Beautiful', 1997, 'Comedy/Drama/Romance');
-console.log(beautiful);
+// const beautiful = new Movie('Life Is Beautiful', 1997, 'Comedy/Drama/Romance');
+// console.log(beautiful);
+
+// "Async"
+// const strArray = ['hello', 'world', 'this', 'is', 'an', 'array'];
+// setTimeout(() => {
+//     const newArray = strArray.map((e) => {
+//         return e = e[0].toUpperCase() + e.slice(1);
+//     })
+//     console.log(newArray)
+// }, 1500)
+
+let likes = 0;
+localStorage.getItem(0) !== null && (likes = JSON.parse(localStorage.getItem(0)));
+function save() {localStorage.setItem(0, JSON.stringify(likes))};
+const totalLikes = document.getElementById("totalLikes");
+totalLikes.innerText = `Total Likes: ${likes}`;
+
+document.getElementById('likes').addEventListener('click', () => {
+    likes++;
+    totalLikes.innerText = `Total Likes: ${likes}`;
+    save();
+})
