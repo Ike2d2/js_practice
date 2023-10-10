@@ -390,7 +390,7 @@ sortSubmit.addEventListener('click', () => {
     }
 })
 
-function renderList(){
+function renderList() {
     sortedList.innerHTML = null;
     sorted.sort();
     sorted.forEach((e) => {
@@ -400,3 +400,29 @@ function renderList(){
         sortedList.append(li);
     })
 }
+
+// Selection Sort
+
+function selSort(array) {
+    let initArray = [...array];
+    let newArray = [];
+    for (let y = array.length; y > 0; y--) {
+        let min = initArray[0];
+        let minI = 0;
+        initArray.forEach((e, i) => {
+            if (e < min) {
+                min = e;
+                minI = i;
+            }
+        }
+        )
+        newArray.push(initArray.splice(minI, 1)[0]);
+    };
+    return newArray;
+}
+
+const startSort = Date.now();
+const sortedArray = selSort([7, 1, 4, 6, 6, 9, 8, 2, 4, 3, 5, -4]);
+const endSort = Date.now();
+console.log(endSort - startSort);
+console.log(sortedArray);
