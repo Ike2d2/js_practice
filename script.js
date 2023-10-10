@@ -368,7 +368,7 @@ createLI.addEventListener("click", () => {
 
 let likes = 0;
 localStorage.getItem(0) !== null && (likes = JSON.parse(localStorage.getItem(0)));
-function save() {localStorage.setItem(0, JSON.stringify(likes))};
+function save() { localStorage.setItem(0, JSON.stringify(likes)) };
 const totalLikes = document.getElementById("totalLikes");
 totalLikes.innerText = `Total Likes: ${likes}`;
 
@@ -377,3 +377,26 @@ document.getElementById('likes').addEventListener('click', () => {
     totalLikes.innerText = `Total Likes: ${likes}`;
     save();
 })
+
+const sortedList = document.getElementById('sorted-list');
+const sortInput = document.getElementById('sort-input');
+const sortSubmit = document.getElementById('sort-submit');
+const sorted = [];
+
+sortSubmit.addEventListener('click', () => {
+    if (sortInput.value) {
+        sorted.push(sortInput.value);
+        renderList();
+    }
+})
+
+function renderList(){
+    sortedList.innerHTML = null;
+    sorted.sort();
+    sorted.forEach((e) => {
+        const li = document.createElement('li');
+        li.className = 'sorted-li';
+        li.innerText = e;
+        sortedList.append(li);
+    })
+}
